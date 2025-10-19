@@ -1,0 +1,214 @@
+/* Register.module.css */
+.registerForm {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--color-bg) 0%, #181818 100%);
+  padding: 2rem 1rem;
+  color: var(--color-text);
+  position: relative;
+  overflow: hidden;
+}
+
+.registerForm::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle, transparent 20%, var(--color-bg) 70%);
+  animation: rotate 30s infinite linear;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  color: #ffffffd8;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.formCard {
+  background: #eef1f5;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.formCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+}
+
+.inputField .MuiOutlinedInput-root {
+  background: #fff;
+  border-radius: 8px;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.inputField .MuiOutlinedInput-root fieldset {
+  border-color: rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.inputField .MuiOutlinedInput-root:hover fieldset {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.inputField .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.inputField .MuiInputLabel-root {
+  color: #555;
+}
+
+.inputField .MuiInputLabel-root.Mui-focused {
+  color: var(--color-accent);
+}
+
+.inputField .MuiFormHelperText-root {
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.submitBtn {
+  border-radius: 10px;
+  font-weight: 700;
+  text-transform: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+  color: #fff;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+.submitBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.submitBtn:hover::before {
+  left: 100%;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4);
+}
+
+.submitBtn:active {
+  transform: translateY(0);
+}
+
+.submitBtn .MuiCircularProgress-root {
+  color: #fff;
+}
+
+.loginRedirect {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.loginLink {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.loginLink:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+.passwordStrength {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.passwordStrength.strong {
+  color: #4caf50;
+}
+
+.passwordStrength.medium {
+  color: #ff9800;
+}
+
+.passwordStrength.weak {
+  color: #f44336;
+}
+
+@media (max-width: 600px) {
+  .formCard {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .submitBtn {
+    width: 100%;
+  }
+}

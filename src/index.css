@@ -1,0 +1,111 @@
+/* main.css */
+
+/* Root theme colors */
+:root {
+  --color-bg: #0d0d0d;        /* almost black */
+  --color-bg-light: #1a1a1a;  /* lighter black for sections */
+  --color-text: #f5f5f5;      /* near-white for readability */
+  --color-text-muted: #b3b3b3;
+  --color-accent: #e50914;    /* bold red accent */
+  --color-accent-hover: #ff1a24;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Base reset */
+body {
+  transition: background-color 0.4s ease;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
+
+/* Container for main content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-text-muted);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* Product cards */
+.card {
+  background-color: var(--color-bg-light);
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 0.5rem 0;
+  color: var(--color-text);
+}
+
+.card p {
+  color: var(--color-text-muted);
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-bg-light);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  color: var(--color-text-muted);
+}
+

@@ -7,10 +7,18 @@ import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import './index.css'
 import App from './App.jsx'
+import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from '@mui/material';
+import theme from './Theme.jsx';
+import ThemeContextProvider from './Context/ThemeContext.jsx';
+import './i18n.jsx';
 
 createRoot(document.getElementById('root')).render(
   <>
-    <App />
-    <CssBaseline />
+   
+      <ThemeContextProvider>
+      <ToastContainer/>
+      <App />
+      </ThemeContextProvider>
   </>
 )

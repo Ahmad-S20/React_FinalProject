@@ -1,0 +1,30 @@
+/* Navbar */
+.navbar {
+  background-color: var(--color-bg-light);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: var(--color-text);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: var(--color-accent);
+}
+
+.link {
+  color: var(--color-text);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
