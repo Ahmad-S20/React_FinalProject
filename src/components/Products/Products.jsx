@@ -34,7 +34,7 @@ export default function Products() {
   if (products.length === 0) {
     return (
       <Box sx={{ py: 7, px: 2, bgcolor: 'background.default', color: 'text.primary' }}>
-        <Typography variant="h4" component="h1" sx={{ mb: 4, fontWeight: 700, textAlign: 'center' }}>
+        <Typography id="Products" variant="h4" component="h1" sx={{ mb: 4, fontWeight: 700, textAlign: 'center' }}>
           {t("Our Products")}
         </Typography>
         <Typography variant="h6" sx={{ color: 'red', textAlign: 'center' }}>
