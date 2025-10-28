@@ -12,8 +12,8 @@ export default function Products() {
   const getProducts = async () => {
     try {
       const response = await axios.get('https://kashop1.runasp.net/api/Customer/Products');
-      // Ensure that response.data is always an array
-      setProducts(Array.isArray(response.data) ? response.data : []);
+      // Check if response.data.data is an array
+      setProducts(Array.isArray(response.data.data) ? response.data.data : []);
     } catch (error) {
       console.log(error);
       setProducts([]); // In case of error, set products to an empty array
@@ -34,7 +34,7 @@ export default function Products() {
   if (products.length === 0) {
     return (
       <Box sx={{ py: 7, px: 2, bgcolor: 'background.default', color: 'text.primary' }}>
-        <Typography id="Products" variant="h4" component="h1" sx={{ mb: 4, fontWeight: 700, textAlign: 'center' }}>
+        <Typography variant="h4" component="h1" sx={{ mb: 4, fontWeight: 700, textAlign: 'center' }}>
           {t("Our Products")}
         </Typography>
         <Typography variant="h6" sx={{ color: 'red', textAlign: 'center' }}>
@@ -46,7 +46,7 @@ export default function Products() {
 
   return (
     <Box sx={{ py: 7, px: 2, bgcolor: 'background.default', color: 'text.primary' }}>
-      <Typography variant="h4" id="Products" component="h1" sx={{ mb: 4, fontWeight: 700, textAlign: 'center' }}>
+      <Typography variant="h4" component="h1" sx={{ mb: 4, fontWeight: 700, textAlign: 'center' }}>
         {t("Our Products")}
       </Typography>
 
@@ -79,7 +79,6 @@ export default function Products() {
                   alt={product.name}
                   sx={{ borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
                 />
-
                 <CardContent sx={{ textAlign: 'center' }}>
                   <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
                     {product.name.split(' ').slice(0, 4).join(' ')}

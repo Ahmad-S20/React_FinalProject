@@ -15,8 +15,9 @@ export default function ProductsFilter() {
   const getProducts = async () => {
     try {
       const response = await axios.get('https://kashop1.runasp.net/api/Customer/Products');
-      setProducts(response.data);
-      setFilteredProducts(response.data); // Initially show all products
+      const productData = response.data?.data || []; // Ensure we access the correct `data` field
+      setProducts(productData);
+      setFilteredProducts(productData); // Initially show all products
     } catch (error) {
       console.log(error);
     } finally {
@@ -45,7 +46,7 @@ export default function ProductsFilter() {
   }, [searchQuery, products]);
 
   if (isLoading) {
-    return <CircularProgress />;
+    return <CircularProgress sx={{ display: 'block', margin: 'auto' }} />;
   }
 
   // Show no products found message with some cool styling
@@ -81,53 +82,49 @@ export default function ProductsFilter() {
       </Typography>
 
       {/* Products Grid */}
-      {products.length > 0 ? (
+      {filteredProducts.length > 0 ? (
         <Grid container spacing={4} justifyContent="center">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <Grid key={product.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
-                <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
-                  <Card
-                    sx={{
-                      maxWidth: 300,
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      boxShadow: 3,
-                      borderRadius: 3,
-                      bgcolor: 'background.paper',
-                      transition: 'transform 0.3s, box-shadow 0.3s',
-                      '&:hover': {
-                        transform: 'translateY(-5px)',
-                        boxShadow: 6,
-                      },
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      height="180"
-                      image={product.mainImageUrl}
-                      alt={product.name}
-                      sx={{ borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
-                    />
+          {filteredProducts.map((product) => (
+            <Grid key={product.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
+                <Card
+                  sx={{
+                    maxWidth: 300,
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    boxShadow: 3,
+                    borderRadius: 3,
+                    bgcolor: 'background.paper',
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: 6,
+                    },
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="180"
+                    image={product.mainImageUrl}
+                    alt={product.name}
+                    sx={{ borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
+                  />
 
-                    <CardContent sx={{ textAlign: 'center' }}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                        {product.name.split(' ').slice(0, 4).join(' ')}
-                      </Typography>
-                      <Typography variant="subtitle1" color="text.secondary" sx={{ fontWeight: 500 }}>
-                        {product.price}$
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </Grid>
-            ))
-          ) : (
-            renderNoProductsFound()
-          )}
+                  <CardContent sx={{ textAlign: 'center' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
+                      {product.name.split(' ').slice(0, 4).join(' ')}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary" sx={{ fontWeight: 500 }}>
+                      {product.price}$
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Link>
+            </Grid>
+          ))}
         </Grid>
       ) : (
         renderNoProductsFound()
